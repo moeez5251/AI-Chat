@@ -9,6 +9,7 @@ body{
     background-color: #212121;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -188,6 +189,8 @@ body{
   row-gap: 40px;
   overflow: scroll;
   overflow-x: hidden;
+  transition: all 2s;
+  margin-top: 0;
 }
 .inputs{
   color: white;
@@ -214,6 +217,10 @@ body{
     display: flex;
     justify-content: space-evenly;
     height: 8%;
+    position: fixed;
+    width: 100%;
+    top: 88%;
+
   }
   #text{
     border: 2px solid black;
@@ -247,4 +254,28 @@ body{
     background-color: gray;
     cursor:not-allowed;
     color: gray;
+  }
+  .message_animate{
+    transition: all 2s;
+    display: flex;
+    justify-content: space-evenly;
+    height: 8%;
+    top: 88%;
+  }
+  .indicator{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 19px;
+    animation: animate 1s infinite forwards 0s;
+  }
+  @keyframes animate {
+    0%{
+      height: 20px;
+      width: 20px;
+    }
+    100%{
+      height: 21px;
+      width: 21px;
+    }
   }
