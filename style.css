@@ -177,11 +177,10 @@ body{
   }
 }
 .image{
-  width: 6%;
-    position: relative;
+  position: relative;
     top: 50px;
     height: 35%;
-    max-width: 30px;
+    max-width: 93px;
     margin: auto;
 }
 .container{
@@ -305,5 +304,8 @@ body{
   }
   .zai{
     font-size: 33px;
+  }
+  .image{
+      max-width: 76px;
   }
   }
