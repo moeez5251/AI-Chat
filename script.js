@@ -1,8 +1,8 @@
 let body = document.querySelector('body');
 let text = "ozai";
 let animate = document.querySelector('.zai');
-function loading() {
 
+function loading() {
         setTimeout(() => {
                 for (let i = 0; i < text.length; i++) {
                         setTimeout(() => {
@@ -14,7 +14,26 @@ function loading() {
                 document.getElementsByClassName('loader')[0].style.top = '-100%';
         }, 3500);
 }
+let AI=localStorage.getItem("BOT");
+if (AI==null) {
+        localStorage.setItem('BOT','')
+}
+else{
+        let local=JSON.parse(localStorage.getItem('BOT'));
+        // console.log(local);
+        let container=document.querySelector('.container');
+        for(let i=0;i<local.bot.length;i++){
+                let new_element0=document.createElement('div');
+                let new_element1=document.createElement('div');
+                new_element0.innerHTML=local.command[i];
+                new_element1.innerHTML=local.bot[i];
+                new_element0.classList.add('inputs','right');
+                new_element1.classList.add('inputs','left');
+                container.appendChild(new_element0);
+                container.appendChild(new_element1);
+        }
 
+}
 
       
 let input = document.getElementById('text');
@@ -29,16 +48,6 @@ input.addEventListener('input', () => {
         }
 });
 btn.addEventListener('click', () => {
-        if (message_container.children.length > 2) {
-                if (document.querySelector('.image')) {
-
-                        document.querySelector('.image').remove();
-                        document.querySelector('.message').classList.add('message_animate');
-                        message_container.style.height = '60vh';
-                        message_container.style.marginTop = '10%';
-                }
-        }
-
         let newelement = document.createElement('div');
         newelement.classList.add('right', 'inputs');
         newelement.innerHTML = input.value.trim();
@@ -51,7 +60,7 @@ btn.addEventListener('click', () => {
         const options = {
                 method: 'POST',
                 headers: {
-                        'x-rapidapi-key': '544727a05dmshe7e455284bae3a8p1520c7jsne7ba47ff870b',
+                          'x-rapidapi-key': '6f3d356613msh297728a391c575ap149f05jsnf273894f8b95',
                         'x-rapidapi-host': 'cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com',
                         'Content-Type': 'application/json'
                 },
@@ -85,10 +94,21 @@ btn.addEventListener('click', () => {
 function fetchDataAndStoreInGlobal() {
   fetching() .then((result) => {
       main = result.toString();
-      console.log(main); 
+//       console.log(main); 
       answer.classList.remove('indicator');
-
       animation(answer,main)
+      let bot_answers=document.querySelectorAll('.left');
+      let message=document.querySelectorAll('.right');
+      let object={
+        bot:[],
+        command:[]
+      }
+      for(let i=0;i<bot_answers.length;i++){
+          object.bot[i]=bot_answers[i].innerHTML;
+          object.command[i]=message[i].innerHTML;
+      
+}
+localStorage.setItem("BOT",JSON.stringify(object));
 })
 .catch((error) => {
         console.error('Error fetching data:', error);
@@ -108,4 +128,5 @@ function animation(element, message) {
                 }, i*10);
          
         }
+      
 }
