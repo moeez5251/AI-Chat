@@ -47,16 +47,18 @@ btn.addEventListener("click", () => {
         newelement.classList.add("right", "inputs");
         newelement.innerHTML = input.value.trim();
         message_container.appendChild(newelement);
+        message_container.scrollTop = message_container.scrollHeight;
         let answer = document.createElement("div");
         answer.classList.add("indicator", "left", "inputs");
+        answer.innerHTML=".";
         message_container.appendChild(answer);
-
+        message_container.scrollTop = message_container.scrollHeight;
         const url =
                 "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions";
         const options = {
                 method: "POST",
                 headers: {
-                        "x-rapidapi-key": "6f3d356613msh297728a391c575ap149f05jsnf273894f8b95",
+                        "x-rapidapi-key": "63372e82e2msh76b3c71e1173aefp1b755bjsn684b73cced94",
                         "x-rapidapi-host":
                                 "cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com",
                         "Content-Type": "application/json",
@@ -89,18 +91,9 @@ btn.addEventListener("click", () => {
                                 main = result.toString();
                                 //       console.log(main);
                                 answer.classList.remove("indicator");
+                                answer.innerHTML="";
                                 animation(answer, main);
-                                let bot_answers = document.querySelectorAll(".left");
-                                let message = document.querySelectorAll(".right");
-                                let object = {
-                                        bot: [],
-                                        command: [],
-                                };
-                                for (let i = 0; i < bot_answers.length; i++) {
-                                        object.bot[i] = bot_answers[i].innerHTML;
-                                        object.command[i] = message[i].innerHTML;
-                                }
-                                localStorage.setItem("BOT", JSON.stringify(object));
+
                         })
                         .catch((error) => {
                                 console.error("Error fetching data:", error);
@@ -119,4 +112,24 @@ function animation(element, message) {
                         element.innerHTML += message[i];
                 }, i * 10);
         }
+        let bot_answers = document.querySelectorAll(".left");
+        let comm = document.querySelectorAll(".right");
+        let object = {
+                bot: [],
+                command: [],
+        };
+        for (let i = 0; i < bot_answers.length; i++) {
+                if(i==bot_answers.length-1){
+                        object.bot[i] = message;
+                        object.command[i] = comm[i].innerHTML;
+                }
+                else{
+                        object.bot[i] = bot_answers[i].innerHTML;
+                        object.command[i] = comm[i].innerHTML;
+
+                }
+        }
+        localStorage.setItem("BOT", JSON.stringify(object));
+
+
 }

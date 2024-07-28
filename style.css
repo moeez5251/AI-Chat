@@ -217,7 +217,8 @@ body{
   .message{
     display: flex;
     justify-content: space-evenly;
-    height: 8%;
+    height: 11%;
+    overflow: hidden;
 
   }
   #text{
