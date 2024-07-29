@@ -15,7 +15,6 @@ function loading() {
         }, 3500);
 }
 let AI = localStorage.getItem("BOT");
-
 if (AI === null || AI === "") {
         localStorage.setItem("BOT", "");
 } else {
@@ -33,6 +32,15 @@ if (AI === null || AI === "") {
                 container.appendChild(new_element1);
         }
 }
+let delete_button=document.querySelector('.delete');
+delete_button.addEventListener('click',()=>{
+       let del= confirm("You want to delete Previous Chats");
+       if (del) {
+                localStorage.removeItem('BOT');
+                location.reload();
+       }
+})
+
 
 let input = document.getElementById("text");
 let btn = document.querySelector(".btn");

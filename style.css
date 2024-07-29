@@ -184,7 +184,7 @@ body{
     margin: auto;
 }
 .container{
-  height: 54vh;
+  height: 52vh;
   display: flex;
   flex-direction: column;
   row-gap: 40px;
@@ -217,7 +217,7 @@ body{
   .message{
     display: flex;
     justify-content: space-evenly;
-    height: 11%;
+    height: 13%;
     overflow: hidden;
 
   }
@@ -226,7 +226,7 @@ body{
     outline: none;
     border-radius: 15px;
     width: 79%;
-    margin: 11px 15px;
+    margin: 13px 15px;
     font-size: 17px;
     padding: 22px 21px;
     font-family: "Rubik", sans-serif;
@@ -273,10 +273,24 @@ body{
     width: 23px;
     }
   }
-
+.delete{
+  border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 10%;
+    right: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0px -1px 9px 1px red;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+}
   @media screen and (max-width:600px) {
     .container{
-      height: 46vh;
+      height: 45vh;
     margin-top: 33px;
       }
       .inputs{
@@ -290,9 +304,14 @@ body{
       #text{
         font-size: 15px;
       }
-      
+      .delete{
+        font-size: 12px;
+        top: 1%;
+        right: 33%;
+        padding: 10px;
+      }
   }
-  @media screen and (max-width:300px) {
+  @media screen and (max-width:340px) {
   .spinner,.spinner1{
     width: 70px;
     height: 70px;
@@ -308,5 +327,11 @@ body{
   }
   .image{
       max-width: 76px;
+  }
+  .delete{
+    font-size: 10px;
+    top: 1%;
+    right: 27%;
+    padding: 9px;
   }
   }
